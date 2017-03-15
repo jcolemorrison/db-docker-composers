@@ -78,7 +78,7 @@ $ docker-compose exec mongoDb mongo -u devadmin -p devadmin --authenticationData
 
 For more information see the full article:
 
-## [Docker for a Fresh MySQL or MongoDB Instance in Any Project](http://start.jcolemorrison.com/docker-with-mysql-or-mongodb-instances-in-projects)
+## [Docker for a Fresh MySQL or MongoDB Instance in Any Project](http://start.jcolemorrison.com/docker-fresh-mysql-or-mongodb-instances-in-projects/)
 
 
 
