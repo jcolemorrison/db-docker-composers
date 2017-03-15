@@ -1,0 +1,40 @@
+# Version 3 only recently came out, so we'll stick with 2 since it's
+# tried and true at this point.  This would convert directly over to
+# Version 3 anyway.
+version: '2'
+
+services:
+  # Name of the service as Docker will reference.
+  mysqlDb:
+
+    # The image, change 5.7 to any of the supported docker version.
+    image: mysql:5.7
+
+    # Required environment variables.
+    # MYSQL_ROOT_PASSWORD defines the root password of the root user
+    # MYSQL_DATABASE names the DB
+    # MYSQL_USER is the non-root user
+    # MYSQL_PASSWORD is the non-root user password
+    environment:
+      MYSQL_ROOT_PASSWORD: "rootpwd"
+      MYSQL_DATABASE: "devdb"
+      MYSQL_USER: "devuser"
+      MYSQL_PASSWORD: "devpwd"
+
+    # What port do you want this MySQL instance to be available on?
+    # The left hand number is what port it will be available on from your machine
+    # perspective.  The right hand number is the post that it's linking up to.
+    # In this case we're saying "link our local 3306 to the docker container's 3306"
+    # which works here, because docker MySQL exposes the MySQL DB to the container's
+    # 3306 port.
+    ports:
+      - 3306:3306
+
+    # We're using a named volume here that docker manages for us.  This is a special
+    # place just for this particular dockerized MySQL instance.
+    volumes:
+      - mydb:/var/lib/mysql
+
+# if you use a named volume, you must also define it here.
+volumes:
+  mydb:

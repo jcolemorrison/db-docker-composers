@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  # Name our service will be known by
+  mongoDb:
+
+    # version of mongo we'll use
+    image: mongo:3.4
+
+    # local port mapping to container port.  Remember, this
+    # doesn't have to be 27017, you could make this availble
+    # on port 3000 on our local machine via 3000:27017
+    # if we really wanted to.
+    ports:
+      - 27017:27017
+
+    # using a named volume
+    volumes:
+      - devmongo:/data/db
+
+    # OPTIONAL: This enforces the need for authentication
+    command: mongod --auth
+
+volumes:
+  devmongo:
